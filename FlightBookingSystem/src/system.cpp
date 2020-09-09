@@ -61,6 +61,10 @@ int    FlightBooking::getId()
     return this->flyId;
 }
 
+void FlightBooking::setId(int const newId)
+{
+    this->flyId = newId;
+}
 
 
 
@@ -172,15 +176,6 @@ void    FlightBooking::cancelReserveSeats()
     else{
         this->flyReserved -= seatsNumber;
     }
-    
-}
-
-
-
-
-
-FlightBooking::~FlightBooking()
-{
     
 }
 

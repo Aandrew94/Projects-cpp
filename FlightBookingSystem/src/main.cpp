@@ -21,42 +21,47 @@ void    cancelFromFly(std::vector<FlightBooking*> &flys);
  *      BEGIN OF MAIN         *
  ******************************/
 
+
+void welcomeMsg()
+{
+    std::cout<< "\n\n\t*** " << UNDL("Flight Booking System") << " ***\n\n";
+    std::cout<< "Let's add one flight together:\n";
+    std::cout<< "-> first we will need to add the capacity of our flight\n";
+    std::cout<< "--> second we will need to add the reserved seats number\n";
+    std::cout<< "---> third, go to the menu and list the flights\n\n\n";
+    std::cout<< BOLD(FWHT("[INFO]")) << " \t To get to the menu - write:\t menu\n";
+    std::cout<< BOLD(FWHT("[INFO]")) << " \t To exit the program - write:\t quit\n";
+}
+
+
 int main(){
 
-    int FLY_LIMIT   =   10;
-    int reserved = 0, capacity = 0;
-    
-    std::cout << "Provide flight capacity: ";
-    std::cin >> capacity;
-    
-    std::cout << "Provide number of reserved seats: ";
-    std::cin >> reserved;
-
-
-//  Command start
+    int reserved{};
+    int capacity{};
     std::string command{};
-    std::cout<< "\nTo get to the menu - write:\t menu";
-    std::cout<< "\nTo exit - write:\t quit\n";
 
-//  The vector
+    welcomeMsg();
+
+    std::cout << UNDL( "\n\t | Provide flight capacity | \n");
+    checkVal(capacity);
+    
+    std::cout << UNDL( "\n\t | Provide reserved seats | \n");
+    checkVal(reserved);
+    
+
     std::vector<FlightBooking*>  flights;
     FlightBooking booking(1, capacity, reserved);
     flights.push_back(&booking);
-
+    printMenu();
 
     while( command != "quit" ){
-        std::cout<< "\n\n";
+        std::cout<< "\n\nGet command:\t";
         std::cin>>command;
 
         if ( command == "menu"){
             printMenu();
         }
-        else if ( command == "create one"){                    //  generate one flight
-            std::cout<<"\nGenerate ONE FLIGHT\n";
-            flights.push_back(generateOneFlight());
-        }
         else if ( command == "create" ){                   //  generate more flights
-            std::cout<<"\nGenerate more FLIGHT\n";
             generateMore(flights);
         }
         else if ( command == "delete"){
@@ -84,16 +89,18 @@ int main(){
 void    printMenu()
 {
     std::cout<< '\n';
-    std::cout<< "\t\t " << BOLD(FWHT(UNDL( "MAIN MENU\n\n")));
-    std::cout<< "\t|  " << "1. Show the menu:\t\t\t" << FGRN("menu") << '\n';
-    std::cout<< "\t|  " << "2. Create flight:\t\t\t" << FGRN("create") <<"  <id>   <capacity>\n";
-    std::cout<< "\t|  " << "3. Delete flight:\t\t\t" << FGRN("delete") <<"  <id>\n";
-    std::cout<< "\t|  " << "4. Add seats:\t\t\t" << FGRN("add") << "\t<at_id> <seats_nr>\n";
-    std::cout<< "\t|  " << "5. Remove seats:\t\t\t" << FGRN("cancel ") <<" <at_id> <seats_nr>\n";
-    std::cout<< "\t|  " << "6. List all the available flights:\t" << FGRN ("list") << '\n';
-    std::cout<< "\t|  " << "7. Quit the program:\t\t\t" << FGRN("quit") << '\n';
+    std::cout<< "\t\t\t\t " << BOLD(FWHT(UNDL( "MAIN MENU\n\n")));
+    std::cout<< "\t|  " << "1. Show the menu:\t\t\t"    << FGRN("menu")     << '\n';
+    std::cout<< "\t|  " << "2. Create flight:\t\t\t"    << FGRN("create")   << FCYN("  <id>    <capacity>\n");
+    std::cout<< "\t|  " << "3. Delete flight:\t\t\t"    << FGRN("delete")   << FCYN("  <id>\n");
+    std::cout<< "\t|  " << "4. Add seats:\t\t\t"        << FGRN("add")      << FCYN("\t<at_id> <seats_nr>\n");
+    std::cout<< "\t|  " << "5. Remove seats:\t\t\t"     << FGRN("cancel ")  << FCYN(" <at_id> <seats_nr>\n");
+    std::cout<< "\t|  " << "6. List all the flights:\t\t"<< FGRN ("list")   << '\n';
+    std::cout<< "\t|  " << "7. Quit the program:\t\t\t" << FGRN("quit")     << '\n';
     std::cout<< "\t|\n\t|\n";
-    std::cout<< "\t|  " << "Legend : . . . \n";
+    std::cout<< "\t|  " << "Legend :\t";
+    std::cout<< BOLD(FGRN(" |- ")) << "commands\t\t";
+    std::cout<< BOLD(FCYN(" |- ")) << "numbers\n";
     std::cout<< "\t" << "\\____________________________________________________________________/\n";
 }
 
@@ -118,6 +125,7 @@ void checkVal(int &number)
 
 FlightBooking* generateOneFlight()
 {
+
     int     id          =   0;
     int     capacity    =   0;
     int     reserved    =   0;
@@ -135,26 +143,44 @@ FlightBooking* generateOneFlight()
 
 void    generateMore(std::vector<FlightBooking*> &flys)
 {
-    //std::cout<<flys.size()<<std::endl;
-
-
     int number;
+    bool flag = true;
+    std::cout<< "\n\n> Generate more flights\n\n";
     std::cout<< BOLD(UNDL("\t | Get number of flights | \n"));
     checkVal(number);
     
-    //flys.resize(number);
-    //std::cout<<"\n"<<flys.size()<<"\n";
 
     for (int i=0; i<number; i++){
         std::cout<<flys.size()<<"\t"<<number<<"\t"<<i<<'\n';
         flys.push_back(generateOneFlight());
     }
+    std::cout<<flys.size();
+    std::vector<FlightBooking*>  temp_flys = flys;
+        std::cout<<temp_flys.size();
+try{
+    for (size_t i=0; i<flys.size(); i++){
+        /*for(size_t j=1;j<temp_flys.size();j++){
+            if (flys[i]->getId() == flys[j]->getId()){
+                std::cout<<"\nTWO FLIGHTS WITH THE SAME ID\t - \t rename one\n";
+                flys[j]->setId(number*number);
+                flag = false;
+                throw -1;
+            }
+            
+        }*/
+    }
+    if (flag == true){
+        throw 1;
+    }
+} catch( int errorId ){
+    if (flag){
+        std::cout<< BOLD(FWHT("[INFO]")) << "\t Job Done.\n";
+    }
+    else{
+        std::cerr<< BOLD(FYEL("[WARNING "<< errorId <<"]")) << "\t One flight ID was changed.\n";
+    }
+}
 
-/*  Listing the flygtsh just to see if it works
-    for (unsigned int i=0; i<=flys.size(); i++){
-        flys[i]->printStatus();
-    }  
-*/
     
 
 }
@@ -162,8 +188,9 @@ void    generateMore(std::vector<FlightBooking*> &flys)
 
 void    deleteFlight(std::vector<FlightBooking*> &flys)
 {
-    std::cout<<"Delete option\n";
     int deleteIndexFly{};
+    bool flag = false;
+    std::cout<< "\n\n> Delete flights\n\n"; 
     std::cout<< BOLD(UNDL("\t | Get flight id number you wold like to delete | \n"));
     checkVal(deleteIndexFly);
 
@@ -172,8 +199,15 @@ void    deleteFlight(std::vector<FlightBooking*> &flys)
 
         if (deleteIndexFly == flys[i]->getId()){
             flys.erase(flys.begin() + i);
-
+            flag = true;
         }
+    }
+
+    if (flag){
+        std::cout<< BOLD(FWHT("[INFO]")) << "\t Job Done.\n";
+    }
+    else{
+        std::cerr<< BOLD(FRED("[ERROR]")) << "\t Job Fail.\n";
     }
 
 }
@@ -183,13 +217,23 @@ void    deleteFlight(std::vector<FlightBooking*> &flys)
 void addToFly(std::vector<FlightBooking*> &flys)
 {
     int id{};
+    bool flag = false;
+    std::cout<< "\n\n> Add seats to flights\n\n"; 
     std::cout<< BOLD(UNDL("\t | Get id number you wold like to add seats | \n"));
     checkVal(id);
 
     for (size_t i=0; i<flys.size();i++){
         if ( id == flys[i]->getId()){
             flys[i]->addReserveSeats();
+            flag = true;
         }
+    }
+
+    if (flag){
+        std::cout<< BOLD(FWHT("[INFO]")) << "\t Job Done.\n";
+    }
+    else{
+        std::cerr<< BOLD(FRED("[ERROR]")) << "\t Job Fail.\n";
     }
 }
 
@@ -197,13 +241,23 @@ void addToFly(std::vector<FlightBooking*> &flys)
 void cancelFromFly(std::vector<FlightBooking*> &flys)
 {
     int id{};
+    bool flag = false;
+    std::cout<< "\n\n> Cancel seats from flights\n\n"; 
     std::cout<< BOLD(UNDL("\t | Get id number you wold like to cancel seats | \n"));
     checkVal(id);
 
     for (size_t i=0; i<flys.size();i++){
         if ( id == flys[i]->getId()){
             flys[i]->cancelReserveSeats();
+            flag = true;
         }
+    }
+
+    if (flag){
+        std::cout<< BOLD(FWHT("[INFO]")) << "\t Job Done.\n";
+    }
+    else{
+        std::cerr<< BOLD(FRED("[ERROR]")) << "\t Job Fail.\n";
     }
 }
 
@@ -212,13 +266,10 @@ void cancelFromFly(std::vector<FlightBooking*> &flys)
 
 void    list(std::vector<FlightBooking*> &flys)
 {  
-
-    std::cout<<"\nLIST\n";
+    std::cout<< "\n\n> Listing flights\n\n"; 
     for ( size_t i=0;i<flys.size();i++){
         flys[i]->printStatus();
     }
-
-
 }
 
 

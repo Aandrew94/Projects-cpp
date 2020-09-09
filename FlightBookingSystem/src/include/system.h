@@ -1,6 +1,7 @@
 #ifndef         SYSTEM_H
 #define         SYSTEM_H
 
+
 class FlightBooking{
     
     private:
@@ -12,7 +13,6 @@ class FlightBooking{
         
     public:
         FlightBooking(int a_id, int a_capacity, int a_reserved);
-        virtual ~FlightBooking();
         
 
         double  ratioFly();
@@ -24,7 +24,10 @@ class FlightBooking{
         void    cancelReserveSeats();
 
         int     getId();
+         void setId(int const newId);
 };
+
+
 
 #endif          //SYSTEM_H
 
