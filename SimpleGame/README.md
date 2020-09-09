@@ -3,7 +3,7 @@
 
 ## Task
 
-Create a basic fight game, in with a Hero will fight against one, two, or more enemy's per act.
+Create a basic fight game, in which a Hero will fight against one, two, or more enemy's per act.
 
 
 <br>

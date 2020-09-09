@@ -3,7 +3,7 @@
 
 ## Task
 
-Create a basic flight booking system, in witch we can manage a flight system.
+Create a basic flight booking system, in which we can manage a flight system.
 
 
 <br>
