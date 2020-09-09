@@ -1,6 +1,6 @@
 #include            <iostream>
 #include            <vector>
-#include            "include/system_new.h"
+#include            "include/system.h"
 #include            "include/color.h"
 
 
@@ -32,19 +32,16 @@ int main(){
     std::cout << "Provide number of reserved seats: ";
     std::cin >> reserved;
 
-//  The vector
-    std::vector<FlightBooking*>  flights;
-    FlightBooking booking(1, capacity, reserved);
-    flights.push_back(&booking);
-
-
 
 //  Command start
     std::string command{};
     std::cout<< "\nTo get to the menu - write:\t menu";
     std::cout<< "\nTo exit - write:\t quit\n";
 
-
+//  The vector
+    std::vector<FlightBooking*>  flights;
+    FlightBooking booking(1, capacity, reserved);
+    flights.push_back(&booking);
 
 
     while( command != "quit" ){
@@ -54,27 +51,26 @@ int main(){
         if ( command == "menu"){
             printMenu();
         }
-        else if ( command == "one"){                    //  generate one
+        else if ( command == "create one"){                    //  generate one flight
             std::cout<<"\nGenerate ONE FLIGHT\n";
             flights.push_back(generateOneFlight());
         }
-        else if ( command == "two" ){                   //  generate more
+        else if ( command == "create" ){                   //  generate more flights
             std::cout<<"\nGenerate more FLIGHT\n";
             generateMore(flights);
         }
-        else if( command == "list"){                    //  list all
-            list(flights);
-        }
         else if ( command == "delete"){
-            deleteFlight(flights);                      //  delete one based on index
+            deleteFlight(flights);                      //  delete one flight based on it's index
         }
         else if ( command == "add"){                    //  add [id] [n] - add n reservations to flight [id]
-           addToFly(flights);
+            addToFly(flights);
         }
         else if ( command == "cancel"){                 //  cancel [id] [n] - cancel n reservations to flight [id]
             cancelFromFly(flights);
         }
-
+        else if ( command == "list"){                    //  list all flights
+            list(flights);
+        }
 
     }
 
