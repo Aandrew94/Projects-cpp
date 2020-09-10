@@ -154,33 +154,32 @@ void    generateMore(std::vector<FlightBooking*> &flys)
         std::cout<<flys.size()<<"\t"<<number<<"\t"<<i<<'\n';
         flys.push_back(generateOneFlight());
     }
-    std::cout<<flys.size();
-    std::vector<FlightBooking*>  temp_flys = flys;
-        std::cout<<temp_flys.size();
-try{
+    
+
+//  check for same ID
+
     for (size_t i=0; i<flys.size(); i++){
-        /*for(size_t j=1;j<temp_flys.size();j++){
+        size_t count{};
+        for(size_t j=i+1;j<flys.size();j++){
             if (flys[i]->getId() == flys[j]->getId()){
-                std::cout<<"\nTWO FLIGHTS WITH THE SAME ID\t - \t rename one\n";
-                flys[j]->setId(number*number);
+
+                count++;
+                flys[j]->setId(flys.size() * number + count);
+                std::cerr<< BOLD(FYEL("[WARNING]")) << "\t Two or more flights with the same ID - Changing ID.\n";
+                std::cerr<< BOLD(FYEL("[Status]:")) << "\t Entered flight id [" << flys[i]->getId() 
+                         << "]\t changed to flight id ["<<flys[j]->getId()<<"]\n";
                 flag = false;
-                throw -1;
+                
             }
-            
-        }*/
+        }
     }
-    if (flag == true){
-        throw 1;
-    }
-} catch( int errorId ){
+    
     if (flag){
         std::cout<< BOLD(FWHT("[INFO]")) << "\t Job Done.\n";
     }
     else{
-        std::cerr<< BOLD(FYEL("[WARNING "<< errorId <<"]")) << "\t One flight ID was changed.\n";
+        std::cout<< BOLD(FYEL("[WARNING]")) << "\t Job Done - by changing the ID.\n";
     }
-}
-
     
 
 }
