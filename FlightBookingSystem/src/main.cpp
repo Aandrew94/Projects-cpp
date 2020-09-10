@@ -157,9 +157,9 @@ void    generateMore(std::vector<FlightBooking*> &flys)
     
 
 //  check for same ID
-
+size_t count{};
     for (size_t i=0; i<flys.size(); i++){
-        size_t count{};
+        
         for(size_t j=i+1;j<flys.size();j++){
             if (flys[i]->getId() == flys[j]->getId()){
 
@@ -260,12 +260,28 @@ void cancelFromFly(std::vector<FlightBooking*> &flys)
     }
 }
 
-
+void swap(FlightBooking* &a,FlightBooking* &b)
+{
+    FlightBooking* temp = a;
+    a = b;
+    b = temp;
+}
 
 
 void    list(std::vector<FlightBooking*> &flys)
 {  
     std::cout<< "\n\n> Listing flights\n\n"; 
+
+//  Arrange flights
+    for (size_t i=0; i<flys.size(); i++){
+        for(size_t j=i+1;j<flys.size();j++){
+
+            if (flys[i]->getId() > flys[j]->getId()){
+                swap(flys[i],flys[j]);
+            }
+        }
+    }
+
     for ( size_t i=0;i<flys.size();i++){
         flys[i]->printStatus();
     }
