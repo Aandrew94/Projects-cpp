@@ -50,27 +50,27 @@ FlightBooking::FlightBooking(int a_id, int a_capacity, int a_reserved)
         }
         
     }
-    //printStatus();
+
 
 }
 
 
 
-int    FlightBooking::getId()
+int     FlightBooking::getId()
 {
     return this->flyId;
 }
 
-void FlightBooking::setId(int const newId)
+void    FlightBooking::setId(int const newId)
 {
     this->flyId = newId;
 }
 
 
 
-double  FlightBooking::ratioFly()
+double      FlightBooking::ratioFly()
 {
-    return double(this->flyReserved*100)/this->flyCapacity;
+    return static_cast<double>(this->flyReserved*100)/this->flyCapacity;
 }
 
 void    FlightBooking::printStatus()
@@ -80,7 +80,7 @@ void    FlightBooking::printStatus()
 
 
 
-bool        FlightBooking::checkCapacity()
+bool    FlightBooking::checkCapacity()
 {
     double flyPercentage = ratioFly();
 
