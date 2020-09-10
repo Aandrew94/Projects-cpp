@@ -24,7 +24,7 @@ class FlightBooking{
         void    cancelReserveSeats();
 
         int     getId();
-         void setId(int const newId);
+        void    setId(int const newId);
 };
 
 
