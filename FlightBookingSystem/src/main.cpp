@@ -5,14 +5,12 @@
 #include            "include/color.h"
 
 
-
-
-
 /****************************** 
  *      BEGIN OF MAIN         *
  ******************************/
 
 int main(){
+
 
     int reserved{};
     int capacity{};
@@ -56,6 +54,8 @@ int main(){
         }
 
     }
+
+    exitFly(flights);
 
     return 0;
 }

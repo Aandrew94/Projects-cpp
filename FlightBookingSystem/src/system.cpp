@@ -4,8 +4,6 @@
 #include            "math.h"
 
 
-
-
 FlightBooking::FlightBooking(int a_id, int a_capacity, int a_reserved)
              :flyId(a_id), flyCapacity(a_capacity), flyReserved(a_reserved)
 {
@@ -77,7 +75,6 @@ void    FlightBooking::printStatus()
 {   
     std::cout<< "Flight [" << this->flyId << "] : " << this->flyReserved << "/" << this->flyCapacity << " (" << ratioFly() << "%) seats reserved" <<'\n';
 }
-
 
 
 bool    FlightBooking::checkCapacity()
@@ -179,3 +176,9 @@ void    FlightBooking::cancelReserveSeats()
     
 }
 
+FlightBooking::~FlightBooking()
+{
+    std::cout<< "Destroyed id "<<this->flyId<<"\n";
+    std::cout<< "Destroyed capacity "<<this->flyCapacity<<"\n";
+    std::cout<< "Destroyed reserved "<<this->flyReserved<<"\n";
+}

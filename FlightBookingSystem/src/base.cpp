@@ -122,13 +122,39 @@ void    deleteFlight(std::vector<FlightBooking*> &flys)
     std::cout<< BOLD(UNDL("\t | Get flight id number you wold like to delete | \n"));
     checkVal(deleteIndexFly);
 
+//  after delete all flights -> give a warning in listing
 
     for( size_t i=0; i<flys.size(); i++){
 
         if (deleteIndexFly == flys[i]->getId()){
-            flys.erase(flys.begin() + i);
+            std::cout<< flys.size() <<'\n';
+
+            if (flys[i]->getId() == 1){
+                flys.erase(flys.begin() + i);
+                flys[i] = NULL;
+                delete flys[i];
+                
+                //flys.erase(flys.begin() + i);
+                //delete flys[i];
+                //flys[i] = NULL;
+            }
+            
+            else{
+                //flys[i] = NULL;
+                delete flys[i];
+                //flys[i] = NULL;
+                flys.erase(flys.begin() + i);
+                flys.resize(flys.size());
+            }
+                //delete flys[i];
+                //flys[i] = NULL;
+            std::cout<< flys.size() <<'\n';
             flag = true;
         }
+    }
+
+    if (flys.size() == 0){
+        std::cout<< BOLD(FYEL("[WARNING]")) << "\t There are no flights in the system\n";
     }
 
     if (flag){
@@ -200,18 +226,40 @@ void    swap(FlightBooking* &a,FlightBooking* &b)
 void    list(std::vector<FlightBooking*> &flys)
 {  
     std::cout<< "\n\n> Listing flights\n\n"; 
+    std::cout<< "capacity: "<<flys.capacity()<<'\n';
+    if (flys.size() == 0){
+        std::cout<< BOLD(FYEL("[Warinig]")) << "\t There are no flights in the system\n";
+    }
+    else
+    {
 
-//  Arrange flights
-    for (size_t i=0; i<flys.size(); i++){
-        for(size_t j=i+1;j<flys.size();j++){
+        //  Arrange flights
+            for (size_t i=0; i<flys.size(); i++){
+                for(size_t j=i+1;j<flys.size();j++){
 
-            if (flys[i]->getId() > flys[j]->getId()){
-                swap(flys[i],flys[j]);
+                    if (flys[i]->getId() > flys[j]->getId()){
+                        swap(flys[i],flys[j]);
+                    }
+                }
             }
-        }
-    }
 
-    for ( size_t i=0;i<flys.size();i++){
-        flys[i]->printStatus();
+            for ( size_t i=0;i<flys.size();i++){
+                flys[i]->printStatus();
+            }
+
     }
+}
+
+
+void exitFly(std::vector<FlightBooking*> &flys)
+{
+    std::cout<<"capacity: "<<flys.capacity()<<'\n';
+    for (size_t i=0; i<flys.size(); i++){
+        flys.erase(flys.begin() + i);
+        //delete flys[i];
+        std::cout<<"capacity: "<<flys.capacity()<<'\n';
+    }
+    flys.clear();
+    std::cout<<"capacity: "<<flys.capacity()<<'\n';
+
 }

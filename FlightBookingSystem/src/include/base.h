@@ -13,6 +13,7 @@ void        deleteFlight(std::vector<FlightBooking*> &flys);
 void        list(std::vector<FlightBooking*>  &flys);
 void        addToFly(std::vector<FlightBooking*> &flys);
 void        cancelFromFly(std::vector<FlightBooking*> &flys);
+void    exitFly(std::vector<FlightBooking*> &flys);
 
 
 

@@ -25,10 +25,9 @@ class FlightBooking{
 
         int     getId();
         void    setId(int const newId);
+        ~FlightBooking();
 };
 
 
-
 #endif          //SYSTEM_H
-
 
