@@ -1,56 +1,20 @@
-# [C++] SimpleGaBasic Algorithms
+# [C++] SimpleBasic Algorithms
 <br>
 
 ## Task
 
 >   Algorithms for processing the digits of a number
->
->   ---
-> 
->   Algoritmi pentru prelucrarea cifrelor unui numar
 
 <br>
 
->    Largest common divisor (cmmdc)
->
->   ---
-> 
->    Cel mai mare divizor comun (cmmdc)
+>   Algorithms for Arrays 1d
 
 <br>
 
->    Lowest common multiple (cmmmc)
->
->   ---
->    
->   Cel mai mic multiplu comun (cmmmc)
-
-<br>
-
->   Prime number test
->
->   ---
-> 
->    Testul de numar prim
-
-<br>
-
->   Own divisors of a number
->
->   ---
->    
->    Divizorii proprii ai unui numar
-
-<br>
-
->   Decomposition into prime factors
->
->   ---
->     
->   Descompunerea in factori primi 
+>   Algorithms for Arrays 2d
 
 ### Possible:   
-* palindrom
+* palindrom 
 * vectori / matrici
 * pointers
 
@@ -63,3 +27,4 @@
 |:--|:--:|:-------:|
 |HP |200 | 40 - 200|
 |ATK|20  |  2 - 30 |
+
