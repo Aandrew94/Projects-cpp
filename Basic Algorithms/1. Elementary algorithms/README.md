@@ -5,6 +5,5 @@
 * Algorithms for Arrays 2d
 
 >### Possible:   
->* palindrom 
->* vectori / matrici
+>* leap year
 >* pointers
