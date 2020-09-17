@@ -1,1 +1,14 @@
-
+- Fibonacci Series  
+- Prime Number                *
+- Palindrome Number           *
+- Factorial                   *
+- Armstrong Number
+- Reverse Number              *
+- Swap Number                 
+- Matrix Multiplication       *
+- Decimal to Binary
+- Number in Characters
+- Alphabet Triangle
+- Number Triangle
+- Fibonacci Triangle
+- Char array to string in C++
