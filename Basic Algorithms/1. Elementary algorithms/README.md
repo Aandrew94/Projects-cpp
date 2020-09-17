@@ -1,8 +1,9 @@
 ## [C++] SimpleBasic Algorithms
 
-* Algorithms for processing the digits of a number
-* Algorithms for Arrays 1d
-* Algorithms for Arrays 2d
+* Algorithms - processing the digits of a number
+* Algorithms - mixt
+* Algorithms - Arrays 1d
+* Algorithms - Arrays 2d
 
 >### Possible:   
 >* leap year
