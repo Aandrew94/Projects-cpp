@@ -175,3 +175,5 @@ While `vector_name.back()` returns the element at the back of the vector (i.e. r
 
 ## Reference:
 >   http://www.cplusplus.com/reference/vector/vector/
+
+>   https://www.javatpoint.com/cpp-vector
