@@ -170,3 +170,8 @@ This method works same in case of vector as it works for array.
 `vector_name.front()` returns the element at the front of the vector (i.e. leftmost element). 
 
 While `vector_name.back()` returns the element at the back of the vector (i.e. rightmost element). 
+
+---
+
+## Reference:
+>   http://www.cplusplus.com/reference/vector/vector/

@@ -134,3 +134,8 @@ This method returns the iterator pointing to the first element of array. Iterato
 
 ### `end()` function
 This method returns an iterator pointing to an element next to the last element in the array, for example the above array has 4 elements and the end() call will return the iterator pointing to the 4th index of the array.
+
+---
+
+## Reference:
+>   http://www.cplusplus.com/reference/array/
