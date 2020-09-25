@@ -7,19 +7,19 @@ Array containter in STL provides us the implementation of **static array**.
 
 Syntax of array container:
 
-`   array<object_type , array_size> array_name;  `
+`   std::array<object_type , array_size> array_name;  `
 
 <br>
 
 The above code creates an empty array of **object_type** with maximum size of **array_size**. However, if we want to create an array with elements in it, we can do by simply using the `=` operator (process called _copy assignment_ or just _assignment_) or using the `{}` (also called _uniform initialization_ form C++17):
 ```
-   #include    <array>
+#include    <array>
    
-   int main() {
-        std::array<int , 4> odd_numbers = { 2, 4, 6, 8 };       //  copy initialization
-        std::array<int , 5> even_number{ 1, 3, 5, 7, 9 };       //  uniform initialization 
-        std::array<int , 3> zero_nr{};                          //  zero initialization for for all 3 variables
-   }
+int main() {
+    std::array<int , 4> odd_numbers = { 2, 4, 6, 8 };       //  copy initialization
+    std::array<int , 5> even_number{ 1, 3, 5, 7, 9 };       //  uniform initialization 
+    std::array<int , 3> zero_nr{};                          //  zero initialization for for all 3 variables
+}
 ```
 <br>
 
